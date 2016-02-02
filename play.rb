@@ -1,23 +1,22 @@
+load "view/depents/colorize.rb"
+load "view/depents/template.rb"
+load "view/design_class.rb"
+class Game
 
-a = nil
-b = nil
+  def initialize
+    @gaming = GameDesign.new
+  end
 
-print "Kim Başlayacak (1 PC), (2 USER):"
+  def main_select
+    sec = @gaming.main_menu
 
-f = nil
-
-loop do
-f = gets.strip
-if(f=="1")
-  a = rand(11..50)
-  break
-elsif(f=="2")
-  loop do
-    puts "a giriş:"
-    a = gets.strip.to_i
-    break if (a>11) and (a<100)
+    case sec
+    when "Q"
+      @gaming.difficulty_select
+    end
   end
 end
-end
 
-p a
+abc = Game.new
+
+abc.main_select
