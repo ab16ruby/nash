@@ -4,7 +4,7 @@ class GameTemplate
 
   def window(**window_option)
 
-      @window_width   = (window_option.include? :width) ? window_option[:width] : "100"
+      @window_width   = (window_option.include? :width) ? window_option[:width] : "150"
       @window_height  = (window_option.include? :height) ? window_option[:height] : "30"
       @window_padding = (window_option.include? :padding) ? window_option[:padding] : "15"
 
@@ -41,9 +41,15 @@ class GameTemplate
   end
 
   def menu(**values)
+    size = 0;
     values.each do |x|
-    (1..@window_padding.to_i).each do print " " end
-      print "#{x[1]}"
+      size += x[1].size
+    end
+    centered = (@main_container - @window_padding.to_i - size+5)/2
+    (1..centered).each do print " " end
+    values.each do |x|
+      (1..5).each do print "\033[48;5;1m\ " end
+      print "\033[48;5;1m\ #{x[1]}"
     end
   end
 
@@ -51,7 +57,7 @@ end
 
 abc = GameTemplate.new
 
-abc.window(width: "100", height: "30", padding: "15")
+abc.window(width: "150", height: "30", padding: "15")
 
 abc.header(sym: "#", color:Colorize::YELLOW, font:Colorize::BOLD)
 abc.header(sym: " ")
