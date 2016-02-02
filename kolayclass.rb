@@ -27,11 +27,7 @@ class Kolay
 			if ran%3==1
 				cev=rand(1..2)
 			else
-				if ran%3==0
-					cev=2
-				else 
-					cev=1
-				end
+				cev = (ran%3).zero? ? 2 : 1
 			end
 		ran-=cev
 		print "pc nin sırası : #{cev}\n"
@@ -42,7 +38,7 @@ class Kolay
 		sira=2
 		#puts cev
 	elsif sira==2	
-		print "oyuncu sirasi"
+		print "oyuncu sirasi : "
 		loop do
 			cev=gets.to_i
 			if cev==1 or cev==2
