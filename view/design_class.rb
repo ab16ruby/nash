@@ -17,14 +17,11 @@ class GameDesign
     @game.header(sym: " ")
     @game.menu(menu:"OYNA-(Q)")
     @game.header(sym: " ")
-    @game.menu(menu:"AYARLAR-(W)")
-    @game.header(sym: " ")
     @game.menu(menu:"ÇIKIŞ-(E)")
     @game.header(sym: "_")
     @game.header(sym: " ")
     @game.header(sym: "#", color:Colorize::YELLOW, font:Colorize::BOLD)
     @game.header(sym: " ")
-    @game.header(title: "SEÇİM", color:Colorize::WHITE, font:Colorize::BOLD)
     gets.strip.upcase
   end
   def difficulty_select
@@ -41,11 +38,13 @@ class GameDesign
     @game.menu(menu:"ZOR-(3)")
     @game.header(sym: " ")
     @game.header(sym: "#", color:Colorize::YELLOW, font:Colorize::BOLD)
+    gets.strip.upcase
   end
   def desc_easy
+    puts `clear`
     @game.header(sym: "#", color:Colorize::YELLOW, font:Colorize::BOLD)
     @game.header(sym: " ")
-    @game.header(title: ">> ZORLUK : KOLAY <<", color:Colorize::GREEN, font:Colorize::BOLD)
+    @game.header(title: ">> #{value} <<", color:Colorize::GREEN, font:Colorize::BOLD)
     @game.header(sym: "_")
     @game.header(sym: " ")
     @game.header(title:"NASIL OYNANIR:", color:Colorize::PURPLE, font:Colorize::BOLD)
@@ -61,9 +60,24 @@ class GameDesign
     @game.header(sym: "_")
     @game.header(sym: " ")
     @game.header(sym: "#", color:Colorize::YELLOW, font:Colorize::BOLD)
+    gets.strip.upcase
+  end
+  def play_easy(value)
+    puts `clear`
+    @game.header(sym: "#", color:Colorize::YELLOW, font:Colorize::BOLD)
+    @game.header(sym: " ")
+    @game.header(title: ">> #{value} <<", color:Colorize::GREEN, font:Colorize::BOLD)
+    @game.header(sym: " ")
+    @game.header(sym: "#", color:Colorize::YELLOW, font:Colorize::BOLD)
+    @game.header(sym: " ")
+  end
+  def yazdir(value)
+    @game.header(title: "#{value}", color:Colorize::WHITE, font:Colorize::BOLD)
+  end
+  def yazdir2(value)
+    @game.header(title: "#{value}", color:Colorize::GREEN, font:Colorize::BOLD)
+  end
+  def yazdir3(value)
+    @game.header(title: "#{value}", color:Colorize::RED, font:Colorize::BOLD)
   end
 end
-
-abc = GameDesign.new
-
-abc.desc_easy

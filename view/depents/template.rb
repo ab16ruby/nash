@@ -25,7 +25,7 @@ class GameTemplate
       if(values.include? :title)
         centered = ((@main_container-values[:title].size)/2)+@window_padding.to_i
         (1..centered).each do print " " end
-        puts "#{values[:color]}#{values[:font]}#{values[:title]}\033[0m"
+          puts "#{values[:color]}#{values[:font]}#{values[:title]}\033[0m"
       end
 
   end

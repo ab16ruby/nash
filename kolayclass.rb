@@ -1,24 +1,19 @@
 class Kolay
-	def initialize
-		@ran = nil
-		@b = nil
-		@sira = nil
-		@cev=nil
-		@isim=nil
+	def initialize a
+		@a = a
 	end
-	def oyunabasla 
-		puts "Isminizi girin : "
-		isim=gets
+	def oyunabasla
+		sleep 1
 		ran=rand(0..1)
-		if ran==1 
-			sira=1  
-			puts "PC basliyor".strip 
+		if ran==1
+			sira=1
+			@a.yazdir("PC basliyor")
 		else
-			sira=2  
-			puts "#{isim.strip} basliyor".strip
+			sira=2
+			@a.yazdir("Oyuncu basliyor")
 		end
 		ran = rand(10...100)
-		puts "Baslanacak sayi #{ran}\n".strip
+		@a.yazdir3("Baslanacak sayi #{ran}\n")
 		loop  do
 			if sira==1
 				if ran==2 or ran==3
@@ -30,34 +25,32 @@ class Kolay
 				cev = (ran%3).zero? ? 2 : 1
 			end
 		ran-=cev
-		print "pc nin sırası : #{cev}\n"
+		@a.yazdir2("pc nin sırası : #{cev} Çıkardı\n")
 		if ran<=1
-			puts "PC kazandı!\n ".strip
+			@a.yazdir("PC kazandı!\n")
 			break
 		end
 		sira=2
 		#puts cev
-	elsif sira==2	
-		print "oyuncu sirasi : "
+	elsif sira==2
+		@a.yazdir2("oyuncu sirasi :")
 		loop do
 			cev=gets.to_i
 			if cev==1 or cev==2
 				break
 			end
-			puts "Hatali secim!\nTekrar sayı giriniz\n".strip
+			@a.yazdir("Hatali secim! Tekrar sayı giriniz\n")
 		end
 		ran-=cev
 		if ran<=1
-			puts "Oyuncu #{isim.strip} kazandı!\n".strip
-			puts cev
+			@a.yazdir("Oyuncu #{isim.strip} kazandı!\n")
+			@a.yazdir(cev)
 			break
 		end
         sira=1
   		end
- 		puts "Sayının son değeri #{ran}\n"
+			@a.yazdir2("Sayının son değeri #{ran}\n")
  		end
- 		puts "Sayının son değeri #{ran}\n"
+		@a.yazdir2("Sayının son değeri #{ran}\n")
  	end
 end
-oyun=Kolay.new()
-oyun.oyunabasla

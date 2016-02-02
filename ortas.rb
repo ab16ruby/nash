@@ -1,66 +1,58 @@
-# sira==1     pc oynuyor
-#sira ==2    oyuncu oynuyor
-#ortaseviye
+
 class Orta
-	def initialize
-		@ran = nil
-		@b = nil
-		@sira = nil
-		@cev=nil
-		@isim=nil
+	def initialize a
+		@a = a
 	end
 	def oyunabasla
-		print "Kullanici adi : "
-		isim=gets
 		ran=rand(0..1)
-		if ran==1 
-			sira=1  
-			puts "PC basliyor".strip 
-end
-if ran==0 
-	sira=2  
-	puts "#{isim.strip} basliyor".strip
-end
-ran = rand(10...100)
-puts "Baslanacak sayi #{ran}\n".strip
-loop  do
-	if sira==1
-		print "pc nin sırası "
-			if ran%4==1
-				cev=rand(1..3)
-			
-			elsif ran%4==0
+		if ran==1
+			 sira=1
+			 @a.yazdir("PC basliyor")
+		else
+			 sira=2
+			  @a.yazdir("Oyuncu basliyor")
+		end
+		ran = rand(10...100)
+		@a.yazdir("Baslanacak sayi #{ran}\n")
+		loop  do
+			if sira==1
+				sira=2
+				if ran<=4
+					cev=ran-1
+				 elsif ran%4==0
 					cev=3
-			elsif ran%4==2
+				 elsif ran%4==2
+					 cev=1
+				 elsif ran%4==3
 					cev=2
-			else
-			        cev=1		
-			
-			end
-		ran-=cev
-		if ran==1
-			puts "PC kazandı!\n".strip
-			puts cev
-			break
-		end
-		sira=2
-		puts cev
-	elsif sira==2	
-		print "oyuncu sirasi"
-		loop do
-			cev=gets.to_i
-			if cev==1 or cev==2 or cev==3
-				break
-			end
-			puts "Hatali secim!\nTekrar sayı giriniz".strip
-		end
-		ran-=cev
-		if ran==1
-			puts "Oyuncu #{isim.strip} kazandı!".strip
-			puts cev
-			break
-		end
-       sira=1
-  end
-  puts ran
- end
+				 else
+				    cev=rand(1..3)
+				 end
+				ran-=cev
+				@a.yazdir("PC nin sırası : #{cev}\n")
+				 if ran==1
+				 	@a.yazdir("PC kazandı!\n")
+				 	break
+			     end
+			 elsif sira==2
+				 @a.yazdir("oyuncunun sirasi : ")
+				 loop do
+					cev=gets.to_i
+					if cev >=0 and cev <=3
+						break
+					end
+					@a.yazdir("Hatali secim!\nTekrar sayı giriniz :")
+				  end
+				  ran-=cev
+		          sira=1
+		         if ran==1
+			     @a.yazdir("Oyuncu #{isim.strip} kazandı!")
+			     @a.yazdir(cev)
+			     break
+		         end
+		     end
+				 @a.yazdir("Sayının son değeri #{ran}\n")
+ 	     end
+ 	     @a.yazdir("Sayının son değeri #{ran}\n")
+     end
+end
