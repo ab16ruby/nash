@@ -23,6 +23,8 @@ class GameDesign
     @game.header(sym: "_")
     @game.header(sym: " ")
     @game.header(sym: "#", color:Colorize::YELLOW, font:Colorize::BOLD)
+    @game.header(sym: " ")
+    @game.header(title: "SEÇİM", color:Colorize::WHITE, font:Colorize::BOLD)
     gets.strip.upcase
   end
   def difficulty_select
