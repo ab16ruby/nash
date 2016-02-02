@@ -6,7 +6,9 @@ class Kolay
 		@cev=nil
 		@isim=nil
 	end
-	def oyunabasla isim
+	def oyunabasla 
+		puts "Isminizi girin : "
+		isim=gets
 		ran=rand(0..1)
 		if ran==1 
 			sira=1  
@@ -58,9 +60,8 @@ class Kolay
   		end
  		puts "Sayının son değeri #{ran}\n"
  		end
+ 		puts "Sayının son değeri #{ran}\n"
  	end
 end
 oyun=Kolay.new()
-puts "Isiminizi girin : "
-isi=gets.strip
-oyun.oyunabasla isi
+oyun.oyunabasla
