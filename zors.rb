@@ -10,19 +10,19 @@ class Zor
 		@isim=nil
 	end
 	def oyunabasla
-		 print "Kullanici adi : "
+		 @a.yazdir( "Kullanici adi : ")
 		 isim=gets
          ran=rand(0..1)
          if ran==1 
 		     sira=1  
-	         puts "PC basliyor\n".strip 
+	         @a.yazdir( "PC basliyor\n") 
          end
 		 if ran==0 
 			 sira=2  
-	         puts "#{isim.strip} basliyor\n".strip
+	         @a.yazdir("#{isim.strip} basliyor\n")
          end
          ran = rand(1...10)
-         puts "Baslanacak sayi #{ran}\n".strip
+         @a.yazdir( "Baslanacak sayi #{ran}\n")
          loop  do
 			if sira==1
 				if ran>=90
@@ -51,34 +51,34 @@ class Zor
 					 cev=2      
 			     end
 		       ran+=cev
-		       print "PC nin sırası : #{cev} \n"
+		       @a.yazdir( "PC nin sırası : #{cev} \n")
 		       if ran==100
-			     puts "PC kazandı!\n".strip
-			     puts cev
+			     @a.yazdir( "PC kazandı!\n")
 			     break
 		       end
 		 sira=2
 	 elsif sira==2	
-		 print "oyuncu sirasi : "
+		 @a.yazdir( "oyuncu siru sirasi : ")
 		 loop do
 			 cev=gets.to_i
 			 if cev>=1 and cev<=10
 				 break
 			end
-			 puts "Hatali secim!\nTekrar sayı giriniz : ".strip
+			 @a.yazdir( "Hatali secim!\nTekrar sayı giriniz : ")
 		 end
 		 ran+=cev
 		 if ran==100
-			 puts "Oyuncu #{isim.strip} kazandı!\n".strip
-			 puts cev
+			 @a.yazdir( "Oyuncu #{isim.strip} kazandı!\n")
+			 @a.yazdir(cev)
 			 break
 		 end
         sira=1
  	   end
- 	   	puts "Sayının son değeri #{ran}\n"
+ 	   	@a.yazdir("Sayının son değeri #{ran}\n")
  	 end
- 	 puts "Sayının son değeri #{ran}\n"
+ 	 @a.yazdir( "Sayının son değeri #{ran}\n")
    end #def 
 end # class 
 oyun=Zor.new()
 oyun.oyunabasla
+		
